@@ -23,14 +23,16 @@ public class MultithreadSample {
 
     private static void process(int index) {
         var random = new Random();
-        int minWaitTime = 5000; // 5秒（ミリ秒単位）
-        int maxWaitTime = 10000; // 10秒（ミリ秒単位）
+        var minWaitTime = 5000; // 5秒（ミリ秒単位）
+        var maxWaitTime = 10000; // 10秒（ミリ秒単位）
 
         // ランダムな待機時間を生成
-        int waitTime = random.nextInt(maxWaitTime - minWaitTime + 1) + minWaitTime;
+        var waitTime = random.nextInt(maxWaitTime - minWaitTime + 1) + minWaitTime;
 
         try {
             Thread.sleep(waitTime);
+
+            // ゼロ埋め2桁、小数3桁で丸めのフォーマットを使用する
             log.info("処理-%02d：%.3fsec".formatted(index, waitTime / 1000.0));
 
         } catch (InterruptedException e) {
