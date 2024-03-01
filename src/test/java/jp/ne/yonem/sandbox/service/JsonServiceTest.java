@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Test;
 import java.io.File;
 import java.util.ArrayList;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 class JsonServiceTest {
 
     @Test
@@ -32,5 +34,12 @@ class JsonServiceTest {
         var sut = new JsonService();
         var items = sut.input(new File(JsonService.OUTPUT_FILE_PATH));
         System.out.println(items);
+    }
+
+    @Test
+    @DisplayName("異常系 - input")
+    void test3() {
+        var sut = new JsonService();
+        assertThrows(Exception.class, () -> sut.input(new File("not_exists")));
     }
 }
