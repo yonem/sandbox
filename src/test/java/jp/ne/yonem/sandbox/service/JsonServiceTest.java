@@ -4,6 +4,7 @@ import jp.ne.yonem.sandbox.dto.Item;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
 import java.util.ArrayList;
 
 class JsonServiceTest {
@@ -23,5 +24,13 @@ class JsonServiceTest {
         items.add(new Item(9L, 3L, "Item-9", "test-data"));
         var sut = new JsonService();
         sut.output(items);
+    }
+
+    @Test
+    @DisplayName("動作確認 - input")
+    void test2() throws Exception {
+        var sut = new JsonService();
+        var items = sut.input(new File(JsonService.OUTPUT_FILE_PATH));
+        System.out.println(items);
     }
 }
