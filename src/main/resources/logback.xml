@@ -8,4 +8,18 @@
             <pattern>%d{yyyy/MM/dd HH:mm:ss} %-5level [%thread] - %msg%n</pattern>
         </encoder>
     </appender>
+    <logger name="jp.ne.yonem.sandbox" level="info">
+        <appender-ref ref="INFO_LOG"/>
+    </logger>
+    <appender name="INFO_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>log/info_log</file>
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>%d{yyyy/MM/dd HH:mm:ss} %-5level [%thread] - %msg%n</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>info</level>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
 </configuration>
